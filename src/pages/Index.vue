@@ -1,6 +1,6 @@
 <template>
-  <div class="column fullscreen">
-    
+  <div class="">
+
   </div>
 </template>
 
