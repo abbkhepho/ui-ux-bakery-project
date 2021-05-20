@@ -30,7 +30,34 @@
 
 <script>
 export default {
-
+  data(){
+    return {
+      cakes: ''
+    }
+  },
+  methods : {
+    loadData: function () {
+      console.log("api call start")
+      // Get all cakes from database
+      api.get('/cakes')
+      .then((response) => {
+        // Parse JSON and save data to store
+        this.cakes = JSON.parse(response.data)
+      })
+      .catch(() => {
+        this.$q.notify({
+          color: 'negative',
+          position: 'top',
+          message: 'Loading failed',
+          icon: 'report_problem'
+        })
+      })
+    }
+  },
+  created () {
+    // Get database data on site creation
+    this.loadData()
+  }
 }
 </script>
 
