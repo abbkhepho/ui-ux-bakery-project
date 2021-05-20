@@ -1,28 +1,23 @@
 <template>
     <q-layout view="lHh Lpr lFf">
-        <q-header reveal>
+        <q-header class="header">
             <q-toolbar id="toolbar">
-                <q-toolbar-title>
+                <q-toolbar-title class="column">
                     <h3 class="q-ma-md">Bear Island Bakery</h3>
+                    <div>
+                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">Store</h6></q-btn>
+                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">About us</h6></q-btn>
+                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">Contact us</h6></q-btn>
+                    </div>
                 </q-toolbar-title>
+                <div class="q-gutter-x-md">
+                    <q-btn round flat class="text-white q-ma-sm" icon="person" />
+                    <q-btn round flat class="text-white q-ma-sm" icon="shopping_cart" />
+                </div>
             </q-toolbar>
         </q-header>
         
         <q-page-container>
-            <div>
-                <q-page-sticky flat expand class="bg-primary" position="top">
-                    <q-toolbar id="toolbar-sticky">
-                        <q-toolbar-title class="q-gutter-x-md">
-                            <q-btn push flat class="text-white q-mb-sm q-pl-xl q-pr-xl">Store</q-btn>
-                            <q-btn push flat class="text-white q-mb-sm q-pl-xl q-pr-xl">About us</q-btn>
-                        </q-toolbar-title>
-                        <div class="q-gutter-x-md">
-                            <q-btn round flat class="text-white q-mb-sm" icon="person" />
-                            <q-btn round flat class="text-white q-mb-sm" icon="shopping_cart" />
-                        </div>
-                    </q-toolbar>
-                </q-page-sticky>
-            </div>
             <router-view />
         </q-page-container>
     </q-layout>
@@ -62,7 +57,7 @@ export default {
 </script>
 
 <style>
-#toolbar-sticky {
-    background-color: rgba(255, 107, 107, 0.5)
+.header {
+    background-color: rgba(255, 107, 107, 0.8)
 }
 </style>

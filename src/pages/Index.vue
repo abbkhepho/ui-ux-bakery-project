@@ -1,17 +1,19 @@
 <template>
-  <div class="hej">
-    <h1>HEJ</h1>
-    <!-- <custom-card title="Lemon cheesecake" image_url="https://raw.githubusercontent.com/filippella/Dagger-Rx-Database-MVP/master/cakes/lemoncheese_cake.jpg" description="abc" price="4"/> -->
+  <div class="row q-ma-sm q-gutter-sm justify-center">
+      <div v-for="n in 10" :key="n">
+        <CustomCard title="Clementine Cake" price="4"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import CustomCard from "../components/CustomCard"
+import CustomCard from "../components/CustomCard.vue"
 
 export default {
   name: 'PageIndex',
   components: {
-    CustomCard: "custom-card"
+    CustomCard
   },
   data(){
     return {
@@ -19,6 +21,8 @@ export default {
     }
   }
 }
+
+console.log()
 </script>
 
 <style>
