@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { api } from 'boot/axios.js'
+
 export default {
   data(){
     return {
@@ -34,10 +36,10 @@ export default {
     loadData: function () {
       console.log("api call start")
       // Get all cakes from database
-      api.get('/cakes')
+      api.get('cakes')
       .then((response) => {
-        // Parse JSON and save data to store
-        this.cakes = JSON.parse(response.data)
+        // Save data to store
+        this.$store.commit('bakery/addCakes', response.data)
       })
       .catch(() => {
         this.$q.notify({
