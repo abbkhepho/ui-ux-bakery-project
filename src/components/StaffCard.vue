@@ -1,10 +1,10 @@
 <template>
-    <div class="main column">
+    <div class="main column justify-center">
         <div class="left row q-gutter-md">
             <div class="avatar">
                 <q-img class="avatar-image" :src="avatar" :ratio="1/1"></q-img>
             </div>
-            <div class="right column">
+            <div class="right column justify-center">
                 <div class="top col-4 text-secondary">
                     <h5 class="q-ma-none">{{ name }}</h5>
                 </div>
@@ -37,14 +37,13 @@ export default {
             required: true
         },
         phone: {
-            type: Number,
+            type: String,
             default: "072 769-0420",
             required: true
         },
         role: {
             type: String,
-            default: "Staff",
-            required: true
+            default: "Staff"
         }
     }
 }
@@ -52,8 +51,8 @@ export default {
 
 <style>
 .avatar {
-    width: 75px;
-    height: 75px;
+    width: 82px;
+    height: 82px;
 }
 
 .avatar-image {
