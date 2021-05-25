@@ -1,8 +1,13 @@
 <template>
   <div class="row q-ma-sm q-gutter-sm justify-center">
-      <div v-for="n in 10" :key="n">
-        <CustomCard title="Clementine Cake" price="4"/>
-      </div>
+    <CustomCard
+      v-for="cake in cakes"
+      :key="cake.title"
+      :title="cake.title"
+      :imageurl="cake.image"
+      :description="cake.detailDescription"
+      :price="cake.price"
+    />
     </div>
   </div>
 </template>
@@ -19,10 +24,13 @@ export default {
     return {
       loggedIn: false
     }
+  },
+  computed: {
+    cakes: function () {
+      return this.$store.state.bakery.cakes
+    }
   }
 }
-
-console.log()
 </script>
 
 <style>

@@ -1,7 +1,7 @@
 <template>
     <div id="main" class="q-ma-sm shadow-6">
         <div v-ripple:white id="img-div" class="relative-position" style="cursor: pointer;">
-            <q-img class="test" :ratio="1/1" :src="image_url" alt="image"></q-img>
+            <q-img class="test" :ratio="1/1" :src="imageurl" alt="image"></q-img>
         </div>
         <div class="column q-pa-md">
             <div class="row justify-between items-center text-primary">
@@ -27,7 +27,7 @@ export default {
             default: 'Clementine Cake',
             required: true
         },
-        image_url: {
+        imageurl: {
             type: String,
             default: "https://raw.githubusercontent.com/filippella/Dagger-Rx-Database-MVP/master/cakes/clementine_cake.png"
         },
@@ -36,7 +36,7 @@ export default {
             default: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.'
         },
         price: {
-            type: String,
+            type: Number,
             default: ''
         }
     },
