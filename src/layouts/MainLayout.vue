@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { api} from 'boot/axios.js'
+import { api } from 'boot/axios.js'
 
 export default {
   methods : {
@@ -101,6 +101,6 @@ export default {
 
 <style>
 .header {
-    background-color: rgba(255, 107, 107, 0.8)
+    background-color: rgba(255, 107, 107, 1)
 }
 </style>

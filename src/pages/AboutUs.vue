@@ -47,7 +47,6 @@ export default {
     },
     computed: {
         importedStaff() {
-            console.log(this.$store.state.bakery.staff)
             return this.$store.state.bakery.staff
         }
     }
