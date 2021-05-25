@@ -1,5 +1,5 @@
 <template>
-    <div id="main" class="q-ma-sm shadow-6">
+    <div id="main" class="q-ma-sm shadow-4">
         <div v-ripple:white id="img-div" class="clickable relative-position" @click="Route('asdad')">
             <q-img class="test" :ratio="1/1" :src="imageurl" alt="image"></q-img>
         </div>

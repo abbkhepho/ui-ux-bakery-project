@@ -3,11 +3,11 @@
         <q-header class="header">
             <q-toolbar id="toolbar">
                 <q-toolbar-title class="column">
-                    <h3 class="q-ma-md">Bear Island Bakery</h3>
+                    <h3 class="title q-ma-md" @click="Route('/')">Bear Island Bakery</h3>
                     <div>
                         <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('/')">Store</h6></q-btn>
-                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('about_us')">About us</h6></q-btn>
-                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">Contact us</h6></q-btn>
+                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('about')">About us</h6></q-btn>
+                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('contact')">Contact us</h6></q-btn>
                     </div>
                 </q-toolbar-title>
                 <div class="q-gutter-x-md">
@@ -20,6 +20,31 @@
         <q-page-container>
             <router-view />
         </q-page-container>
+
+        <div class="footer column bg-primary text-white">
+          <div class="quote row col-3 justify-center">
+            <h3 class="q-mb-none">Nearly 100 years old recipes!</h3>
+          </div>
+          <div class="ratings row justify-around">
+            <div class="no1 column justify-center">
+              <h4 class="q-mb-none text-italic">"Too good to be true."</h4>
+              <h6 class="q-mt-sm">- Cake Recipes</h6>
+            </div>
+            <div class="no2 column">
+              <h4 class="q-mb-none text-italic">"This cannot get any better."</h4>
+              <h6 class="q-mt-sm">- New York Times</h6>
+            </div>
+            <div class="no3 column">
+              <h4 class="q-mb-none text-italic">"I wish I was born in this family."</h4>
+              <h6 class="q-mt-sm">- The Guardian</h6>
+            </div>
+          </div>
+          <div class="authorities row">
+            <p class="q-ml-md q-mb-sm q-ma-none">
+              © Swhartz Bear Island 1923 - 2021
+            </p>
+          </div>
+        </div>
     </q-layout>
 </template>
 
@@ -27,7 +52,13 @@
 import { api } from 'boot/axios.js'
 
 export default {
-  methods : {
+  data() {
+    return {
+      visible: false
+    }
+  },
+
+  methods: {
     loadData() {
       console.log("api call start")
       // Get all cakes from database
@@ -88,10 +119,12 @@ export default {
         })
       })
     },
+
     Route(route) {
       this.$router.push(route)
     }
   },
+
   created () {
     // Get database data on site creation
     this.loadData()
@@ -102,5 +135,9 @@ export default {
 <style>
 .header {
     background-color: rgba(255, 107, 107, 1)
+}
+
+.title {
+  cursor: pointer;
 }
 </style>
