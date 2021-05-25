@@ -6,7 +6,7 @@
                     <h3 class="q-ma-md">Bear Island Bakery</h3>
                     <div>
                         <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">Store</h6></q-btn>
-                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">About us</h6></q-btn>
+                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('about_us')">About us</h6></q-btn>
                         <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">Contact us</h6></q-btn>
                     </div>
                 </q-toolbar-title>
@@ -28,7 +28,7 @@ import { api} from 'boot/axios.js'
 
 export default {
   methods : {
-    loadData: function () {
+    loadData() {
       console.log("api call start")
       // Get all cakes from database
 
@@ -87,6 +87,9 @@ export default {
           icon: 'report_problem'
         })
       })
+    },
+    Route(route) {
+      this.$router.push(route)
     }
   },
   created () {
