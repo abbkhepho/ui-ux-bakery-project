@@ -5,7 +5,7 @@
                 <q-toolbar-title class="column">
                     <h3 class="q-ma-md">Bear Island Bakery</h3>
                     <div>
-                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">Store</h6></q-btn>
+                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('/')">Store</h6></q-btn>
                         <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('about_us')">About us</h6></q-btn>
                         <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none">Contact us</h6></q-btn>
                     </div>

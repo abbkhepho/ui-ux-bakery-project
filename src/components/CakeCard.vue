@@ -1,14 +1,14 @@
 <template>
     <div id="main" class="q-ma-sm shadow-6">
-        <div v-ripple:white id="img-div" class="relative-position" style="cursor: pointer;">
+        <div v-ripple:white id="img-div" class="clickable relative-position" @click="Route('asdad')">
             <q-img class="test" :ratio="1/1" :src="imageurl" alt="image"></q-img>
         </div>
         <div class="column q-pa-md">
             <div class="row justify-between items-center text-primary">
-                <h6 id="title" class="q-ma-none text-weight-bolder">{{ title }}</h6>
+                <h6 id="title" class="clickable q-ma-none text-weight-bolder" @click="Route('asdad')">{{ title }}</h6>
                 <div class="row q-gutter-x-md items-center">
                     <h6 class="q-ma-none text-weight-light">${{ price }}</h6>
-                    <q-btn id="add" class="text-white" :class="classbg" round @click="addToCart" :icon="icon"></q-btn>                
+                    <q-btn id="add" class="text-white q-ma-none q-ml-sm" :class="classbg" round @click="addToCart" :icon="icon"></q-btn>                
                 </div>
             </div>
             <q-expansion-item switch-toggle-side class="text-info q-mt-md" label="Description">
@@ -29,7 +29,7 @@ export default {
         },
         imageurl: {
             type: String,
-            default: "https://raw.githubusercontent.com/filippella/Dagger-Rx-Database-MVP/master/cakes/clementine_cake.png"
+            default: "https://cdn.discordapp.com/emojis/792839288093933608.png?v=1"
         },
         description: {
             type: String,
@@ -54,6 +54,9 @@ export default {
                 console.log("removed from cart")
             }
             
+        },
+        Route(route) {
+            this.$router.push(route)
         }
     },
     data() {
@@ -94,5 +97,9 @@ q-expansion-item {
 .test {
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
+}
+
+.clickable {
+    cursor: pointer;
 }
 </style>
