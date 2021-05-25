@@ -1,13 +1,13 @@
 <template>
   <div class="row q-ma-sm q-gutter-sm justify-center">
-    <CustomCard
-      v-for="cake in cakes"
-      :key="cake.title"
-      :title="cake.title"
-      :imageurl="cake.image"
-      :description="cake.detailDescription"
-      :price="cake.price"
-    />
+    <!-- Creates a CustomCard for every cake !-->
+    <div v-for="cake in cakes" :key="cake.title">
+      <CustomCard
+            :title="cake.title"
+            :imageurl="cake.image"
+            :description="cake.detailDescription"
+            :price="cake.price"
+      />
     </div>
   </div>
 </template>

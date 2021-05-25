@@ -24,18 +24,14 @@
 </template>
 
 <script>
-import { api } from 'boot/axios.js'
+import { api} from 'boot/axios.js'
 
 export default {
-  data(){
-    return {
-      cakes: ''
-    }
-  },
   methods : {
     loadData: function () {
       console.log("api call start")
       // Get all cakes from database
+
       api.get('cakes')
       .then((response) => {
         // Save data to store
@@ -45,7 +41,49 @@ export default {
         this.$q.notify({
           color: 'negative',
           position: 'top',
-          message: 'Loading failed',
+          message: 'Cake loading failed',
+          icon: 'report_problem'
+        })
+      })
+
+      api.get('staff')
+      .then((response) => {
+        // Save data to store
+        this.$store.commit('bakery/addStaff', response.data)
+      })
+      .catch(() => {
+        this.$q.notify({
+          color: 'negative',
+          position: 'top',
+          message: 'Staff loading failed',
+          icon: 'report_problem'
+        })
+      })
+
+      api.get('customers')
+      .then((response) => {
+        // Save data to store
+        this.$store.commit('bakery/addCustomers', response.data)
+      })
+      .catch(() => {
+        this.$q.notify({
+          color: 'negative',
+          position: 'top',
+          message: 'Customer loading failed',
+          icon: 'report_problem'
+        })
+      })
+
+      api.get('orders')
+      .then((response) => {
+        // Save data to store
+        this.$store.commit('bakery/addOrders', response.data)
+      })
+      .catch(() => {
+        this.$q.notify({
+          color: 'negative',
+          position: 'top',
+          message: 'Order loading failed',
           icon: 'report_problem'
         })
       })
