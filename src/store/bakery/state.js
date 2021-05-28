@@ -3,6 +3,7 @@ export default function () {
     cakes: [],
     staff: [],
     customers: [],
-    orders: []
+    orders: [],
+    currentOrder: {"cakes": [], "totalPrice": null,}
   }
 }

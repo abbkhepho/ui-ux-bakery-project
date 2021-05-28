@@ -16,7 +16,7 @@
                     <q-btn round flat class="q-ma-sm" icon="shopping_cart" />
                   </div>
                   <div v-else>
-                    <q-btn flat class="q-ma-sm" no-caps label="Sign Up" @click="Route('create_account')"/>
+                    <q-btn flat class="q-ma-sm" no-caps label="Sign Up"/>
                     <q-btn flat class="q-ma-sm" no-caps label="Sign In" @click="stateChange()"/>
                   </div>
                 </div>
