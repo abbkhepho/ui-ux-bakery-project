@@ -41,7 +41,7 @@ export function addOrders (state, orders) {
 
 export function addCurrentOrder (state, cake) {
   // Adds a cake to current order and calculates price
-  var currentPrice = 0
+  
   var cakePresent = false
   for (var i = 0; i < state.currentOrder.cakes.length; i++) {
     if (state.currentOrder.cakes[i].cakeId == cake) {
@@ -56,6 +56,17 @@ export function addCurrentOrder (state, cake) {
     }
     state.currentOrder.cakes.push(newCake)
   }
+
+  var currentPrice = 0
+  for (var i = 0; i < state.currentOrder.cakes.length; i++) {
+    for (var j = 0; j < state.cakes.length; j++) {
+      if (state.cakes[j].id == state.currentOrder.cakes[i].cakeId) {
+        console.log(state.cakes[j].price)
+        currentPrice += state.cakes[j].price * state.currentOrder.cakes[i].quantity
+      }
+    }
+  }
+  state.currentOrder.totalPrice = currentPrice
   console.log(state.currentOrder)
 }
 
