@@ -43,12 +43,15 @@ export function addCurrentOrder (state, cake) {
   // Adds a cake to current order and calculates price
   
   var cakePresent = false
+  // Checks if the cake added exists in currentOrder
   for (var i = 0; i < state.currentOrder.cakes.length; i++) {
     if (state.currentOrder.cakes[i].cakeId == cake) {
+      // If it does it adds one to the quantity
       state.currentOrder.cakes[i].quantity += 1
       cakePresent = true
     }
   }
+  // If it doesn't it add a new dictionary with the new cake
   if (!cakePresent) {
     var newCake = {
       "cakeId": cake,
@@ -58,6 +61,7 @@ export function addCurrentOrder (state, cake) {
   }
 
   var currentPrice = 0
+  // Loops trough every type of cake in currentOrder and calculates the price by check cakes
   for (var i = 0; i < state.currentOrder.cakes.length; i++) {
     for (var j = 0; j < state.cakes.length; j++) {
       if (state.cakes[j].id == state.currentOrder.cakes[i].cakeId) {
