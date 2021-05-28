@@ -11,7 +11,7 @@
                 </div>
                 <div class="column items-center">
                     <q-btn flat class="bg-secondary text-white" icon="arrow_drop_up" size="xs" @click="addItem"></q-btn>
-                    <h6 class="q-ma-none text-weight-light">{{ quantity }}</h6>
+                    <h6 class="q-ma-none text-weight-light text-accent">{{ quantity }}</h6>
                     <q-btn flat class="bg-secondary text-white" icon="arrow_drop_down" size="xs" @click="subtractItem"></q-btn>
                 </div>
             </div>
@@ -64,10 +64,22 @@ export default {
     },
     data() {
         return {
-            icon: "add",
-            added: false,
-            classbg: "bg-secondary",
-            quantity: 0
+            
+        }
+    },
+    computed: {
+        quantity() {
+            console.log(this.$store.state.bakery.currentOrder.totalPrice)
+
+            if(this.$store.state.bakery.currentOrder.cakes.length != 0) {
+                for(var cake = 0; cake < this.$store.state.bakery.currentOrder.cakes.length; cake++) {
+                    if(this.$store.state.bakery.currentOrder.cakes[cake].cakeId == this.id) {
+                        return this.$store.state.bakery.currentOrder.cakes[cake].quantity
+                    }
+                }
+            }
+
+            return 0
         }
     }
 }
