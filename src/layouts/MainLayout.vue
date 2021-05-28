@@ -11,14 +11,22 @@
                     </div>
                 </q-toolbar-title>
                 <div class="q-gutter-x-md">
-                    <q-btn round flat class="text-white q-ma-sm" icon="person" />
+                    <!-- Opens the login dialog !-->
+                    <q-btn round flat class="text-white q-ma-sm" icon="person" @click="stateChange()" />
+
                     <q-btn round flat class="text-white q-ma-sm" icon="shopping_cart" />
                 </div>
             </q-toolbar>
         </q-header>
         
+        
         <q-page-container>
             <router-view />
+            <Login
+            ref="loginComponent" 
+            :loginState="loginState"
+            />
+            
         </q-page-container>
 
         <div class="footer column bg-primary text-white">
@@ -50,22 +58,25 @@
 
 <script>
 import { api } from 'boot/axios.js'
+import Login from "../components/Login.vue"
 
 export default {
+  components: {
+    Login
+  },
   data() {
     return {
-      visible: false
+      loginState: false
     }
   },
-
-  methods: {
+  methods : {
     loadData() {
       console.log("api call start")
-      // Get all cakes from database
 
+      // Get all cakes from database
       api.get('cakes')
       .then((response) => {
-        // Save data to store
+        // Save cakes to store
         this.$store.commit('bakery/addCakes', response.data)
       })
       .catch(() => {
@@ -77,9 +88,10 @@ export default {
         })
       })
 
+      // Get all staff from database
       api.get('staff')
       .then((response) => {
-        // Save data to store
+        // Save stuff to store
         this.$store.commit('bakery/addStaff', response.data)
       })
       .catch(() => {
@@ -91,9 +103,10 @@ export default {
         })
       })
 
+      // Get all customers from database
       api.get('customers')
       .then((response) => {
-        // Save data to store
+        // Save customers to store
         this.$store.commit('bakery/addCustomers', response.data)
       })
       .catch(() => {
@@ -105,9 +118,10 @@ export default {
         })
       })
 
+      // Get all orders from database
       api.get('orders')
       .then((response) => {
-        // Save data to store
+        // Save orders to store
         this.$store.commit('bakery/addOrders', response.data)
       })
       .catch(() => {
@@ -122,6 +136,10 @@ export default {
 
     Route(route) {
       this.$router.push(route)
+    },
+    //Runs the changeState function in the Login component which opens the login dialog
+    stateChange() {
+      this.$refs.loginComponent.changeState()
     }
   },
 
