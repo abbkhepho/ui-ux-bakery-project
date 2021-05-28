@@ -1,17 +1,21 @@
 <template>
     <div id="main" class="q-ma-sm shadow-4">
-        <div v-ripple:white id="img-div" class="clickable relative-position" @click="Route('asdad')">
+        <div id="img-div" class="relative-position">
             <q-img class="test" :ratio="1/1" :src="imageurl" alt="image"></q-img>
         </div>
         <div class="column q-pa-md">
-            <div class="row justify-between items-center text-primary">
-                <h6 id="title" class="clickable q-ma-none text-weight-bolder" @click="Route('asdad')">{{ title }}</h6>
-                <div class="row q-gutter-x-md items-center">
+            <div class="row justify-between text-primary">
+                <div>
+                    <h6 id="title" class="q-ma-none text-weight-bolder">{{ title }}</h6>
                     <h6 class="q-ma-none text-weight-light">${{ price }}</h6>
-                    <q-btn id="add" class="text-white q-ma-none q-ml-sm" :class="classbg" round @click="addToCart" :icon="icon"></q-btn>                
+                </div>
+                <div class="column items-center">
+                    <q-btn flat class="bg-secondary text-white" icon="arrow_drop_up" size="xs" @click="addItem"></q-btn>
+                    <h6 class="q-ma-none text-weight-light">{{ quantity }}</h6>
+                    <q-btn flat class="bg-secondary text-white" icon="arrow_drop_down" size="xs" @click="subtractItem"></q-btn>
                 </div>
             </div>
-            <q-expansion-item switch-toggle-side class="text-info q-mt-md" label="Description">
+            <q-expansion-item switch-toggle-side class="text-info q-mt-sm" label="Description">
                 {{ description }}
             </q-expansion-item>
         </div>
@@ -41,29 +45,24 @@ export default {
         }
     },
     methods: {
-        addToCart() {
-            if (!this.added) {
-                this.added = true
-                this.icon = "remove"
-                this.classbg = "bg-accent"
-                console.log("added to cart")
-            } else {
-                this.added = false
-                this.icon = "add"
-                this.classbg = "bg-secondary"
-                console.log("removed from cart")
-            }
-            
-        },
         Route(route) {
             this.$router.push(route)
-        }
+        },
+        addItem() {
+            this.quantity++
+        },
+        subtractItem() {
+            if(this.quantity != 0) {
+                this.quantity--
+            }
+        },
     },
     data() {
         return {
             icon: "add",
             added: false,
-            classbg: "bg-secondary"
+            classbg: "bg-secondary",
+            quantity: 0
         }
     }
 }

@@ -10,23 +10,25 @@
                         <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('contact')">Contact us</h6></q-btn>
                     </div>
                 </q-toolbar-title>
-                <div class="q-gutter-x-md">
-                    <!-- Opens the login dialog !-->
-                    <q-btn round flat class="text-white q-ma-sm" icon="person" @click="stateChange()" />
-
-                    <q-btn round flat class="text-white q-ma-sm" icon="shopping_cart" />
+                <div class="row q-gutter-x-md text-white">
+                  <div v-if="loggedIn">
+                    <q-btn round flat class="q-ma-sm" icon="person" @click="Route('account')"/>
+                    <q-btn round flat class="q-ma-sm" icon="shopping_cart" />
+                  </div>
+                  <div v-else>
+                    <q-btn flat class="q-ma-sm" no-caps label="Sign Up" @click="Route('create_account')"/>
+                    <q-btn flat class="q-ma-sm" no-caps label="Sign In" @click="stateChange()"/>
+                  </div>
                 </div>
             </q-toolbar>
         </q-header>
-        
-        
+
         <q-page-container>
             <router-view />
             <Login
             ref="loginComponent" 
             :loginState="loginState"
             />
-            
         </q-page-container>
 
         <div class="footer column bg-primary text-white">
@@ -66,7 +68,8 @@ export default {
   },
   data() {
     return {
-      loginState: false
+      loginState: false,
+      loggedIn: false
     }
   },
   methods : {
