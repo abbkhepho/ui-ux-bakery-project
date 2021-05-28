@@ -41,15 +41,16 @@ export function addOrders (state, orders) {
 
 export function addCurrentOrder (state, cake) {
   // Adds a cake to current order and calculates price
-  cakePresent = false
-  for (var i = 0; i < state.currentOrder.cakes; i++) {
+  var currentPrice = 0
+  var cakePresent = false
+  for (var i = 0; i < state.currentOrder.cakes.length; i++) {
     if (state.currentOrder.cakes[i].cakeId == cake) {
       state.currentOrder.cakes[i].quantity += 1
       cakePresent = true
     }
   }
   if (!cakePresent) {
-    newCake = {
+    var newCake = {
       "cakeId": cake,
       "quantity": 1
     }
