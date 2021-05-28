@@ -3,6 +3,7 @@
     <div class="row col-8 q-ma-sm q-mt-none q-gutter-sm justify-center">
       <div v-for="cake in cakes" :key="cake.title">
           <CakeCard
+            :id="cake.id"
             :title="cake.title"
             :imageurl="cake.image"
             :description="cake.detailDescription"

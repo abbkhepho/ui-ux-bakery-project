@@ -13,10 +13,10 @@
                 <div class="row q-gutter-x-md text-white">
                   <div v-if="loggedIn">
                     <q-btn round flat class="q-ma-sm" icon="person" @click="Route('account')"/>
-                    <q-btn round flat class="q-ma-sm" icon="shopping_cart" />
+                    <q-btn round flat class="q-ma-sm" icon="shopping_cart" @click="cartStateChange()"/>
                   </div>
                   <div v-else>
-                    <q-btn flat class="q-ma-sm" no-caps label="Sign Up" @click="Route('create_account')"/>
+                    <q-btn flat class="q-ma-sm" no-caps label="Sign Up"/>
                     <q-btn flat class="q-ma-sm" no-caps label="Sign In" @click="stateChange()"/>
                   </div>
                 </div>
@@ -28,6 +28,10 @@
             <Login
             ref="loginComponent" 
             :loginState="loginState"
+            />
+            <Cart
+            ref="cartComponent" 
+            :cartState="cartState"
             />
         </q-page-container>
 
@@ -61,15 +65,18 @@
 <script>
 import { api } from 'boot/axios.js'
 import Login from "../components/Login.vue"
+import Cart from "../components/Cart.vue"
 
 export default {
   components: {
-    Login
+    Login,
+    Cart
   },
   data() {
     return {
       loginState: false,
-      loggedIn: false
+      cartState: false,
+      loggedIn: true
     }
   },
   methods : {
@@ -143,6 +150,10 @@ export default {
     //Runs the changeState function in the Login component which opens the login dialog
     stateChange() {
       this.$refs.loginComponent.changeState()
+    },
+
+    cartStateChange() {
+      this.$refs.cartComponent.changeState()
     }
   },
 

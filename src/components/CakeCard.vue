@@ -26,6 +26,11 @@
 export default {
     name: 'CustomCards',
     props: {
+        id: {
+            type: Number,
+            default: '',
+            required: true
+        },
         title: {
             type: String,
             default: 'Clementine Cake',
@@ -49,11 +54,11 @@ export default {
             this.$router.push(route)
         },
         addItem() {
-            this.quantity++
+            this.$store.commit("bakery/addCurrentOrder", this.id)
         },
         subtractItem() {
-            if(this.quantity != 0) {
-                this.quantity--
+            if(this.quantity > 0) {
+                this.$store.commit("bakery/removeCurrentOrder", this.id)
             }
         },
     },
