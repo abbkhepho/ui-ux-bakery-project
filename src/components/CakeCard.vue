@@ -57,9 +57,7 @@ export default {
             this.$store.commit("bakery/addCurrentOrder", this.id)
         },
         subtractItem() {
-            if(this.quantity > 0) {
-                this.$store.commit("bakery/removeCurrentOrder", this.id)
-            }
+            this.$store.commit("bakery/removeCurrentOrder", this.id)
         },
     },
     data() {

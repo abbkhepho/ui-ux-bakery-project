@@ -61,7 +61,7 @@ export function addCurrentOrder (state, cake) {
   }
 
   var currentPrice = 0
-  // Loops trough every type of cake in currentOrder and calculates the price by check cakes
+  // Loops trough every type of cake in currentOrder and calculates the price by checking the cakes state
   for (var i = 0; i < state.currentOrder.cakes.length; i++) {
     for (var j = 0; j < state.cakes.length; j++) {
       if (state.cakes[j].id == state.currentOrder.cakes[i].cakeId) {
@@ -74,3 +74,30 @@ export function addCurrentOrder (state, cake) {
   console.log(state.currentOrder)
 }
 
+export function removeCurrentOrder (state, cake) {
+  // Adds all orders in "orders" the the state "orders"
+
+  for (var i = 0; i < state.currentOrder.cakes.length; i++) {
+    if (state.currentOrder.cakes[i].cakeId == cake) {
+      // If it does it adds one to the quantity
+      state.currentOrder.cakes[i].quantity -= 1
+      if (state.currentOrder.cakes[i].quantity <= 0) {
+        state.currentOrder.cakes.splice(i)
+      }
+    }
+  }
+
+  var currentPrice = 0
+  // Loops trough every type of cake in currentOrder and calculates the price by checking the cakes state
+  for (var i = 0; i < state.currentOrder.cakes.length; i++) {
+    for (var j = 0; j < state.cakes.length; j++) {
+      if (state.cakes[j].id == state.currentOrder.cakes[i].cakeId) {
+        console.log(state.cakes[j].price)
+        currentPrice += state.cakes[j].price * state.currentOrder.cakes[i].quantity
+      }
+    }
+  }
+  state.currentOrder.totalPrice = currentPrice
+  console.log(state.currentOrder)
+
+}
