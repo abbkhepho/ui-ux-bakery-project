@@ -60,26 +60,32 @@ export default {
           password: ""
         }
     },
-    props: {
-        loginState: {
-            type: Boolean,
-            default: false,
-            required: true
-        }
-    },
     methods: {
       changeState () {
         this.state = !this.state
       },
       onLogin () {
-        console.log("skeet")
-        this.state = false
-      },
-      onCancel () {
-        console.log("yeet")
+        for (var i = 0; i < this.customers.length; i++) {
+          if (this.customers[i].email == this.email.trim()) {
+            if (this.customers[i].password == this.password.trim()) {
+              this.$store.commit("bakery/login", this.customers[i].id)
+            }
+          }
+        }
+        console.log(this.$store.state.bakery.currentUser)
         this.email = ""
         this.password = ""
         this.state = false
+      },
+      onCancel () {
+        this.email = ""
+        this.password = ""
+        this.state = false
+      }
+    },
+    computed: {
+      customers: function () {
+        return this.$store.state.bakery.customers
       }
     }
 }

@@ -4,6 +4,7 @@ export default function () {
     staff: [],
     customers: [],
     orders: [],
-    currentOrder: {"cakes": [], "totalPrice": null,}
+    currentOrder: {"cakes": [], "totalPrice": null,},
+    currentUser: null
   }
 }

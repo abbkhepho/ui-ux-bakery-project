@@ -57,7 +57,9 @@ export default {
             this.$store.commit("bakery/addCurrentOrder", this.id)
         },
         subtractItem() {
-            this.$store.commit("bakery/removeCurrentOrder", this.id)
+            if(this.quantity > 0) {
+                this.$store.commit("bakery/subtractCurrentOrder", this.id)
+            }
         },
     },
     data() {
@@ -67,8 +69,6 @@ export default {
     },
     computed: {
         quantity() {
-            console.log(this.$store.state.bakery.currentOrder.totalPrice)
-
             if(this.$store.state.bakery.currentOrder.cakes.length != 0) {
                 for(var cake = 0; cake < this.$store.state.bakery.currentOrder.cakes.length; cake++) {
                     if(this.$store.state.bakery.currentOrder.cakes[cake].cakeId == this.id) {

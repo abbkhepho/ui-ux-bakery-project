@@ -12,6 +12,7 @@
                 </q-toolbar-title>
                 <div class="row q-gutter-x-md text-white">
                   <div v-if="loggedIn">
+                    <q-btn flat class="q-ma-sm" no-caps label="Sign Out" @click="signOut()"/>
                     <q-btn round flat class="q-ma-sm" icon="person" @click="Route('account')"/>
                     <q-btn round flat class="q-ma-sm" icon="shopping_cart" @click="cartStateChange()"/>
                   </div>
@@ -75,8 +76,7 @@ export default {
   data() {
     return {
       loginState: false,
-      cartState: false,
-      loggedIn: true
+      cartState: false
     }
   },
   methods : {
@@ -154,6 +154,20 @@ export default {
 
     cartStateChange() {
       this.$refs.cartComponent.changeState()
+    },
+
+    signOut() {
+      this.$store.commit("bakery/logout")
+    }
+  },
+
+  computed: {
+    loggedIn: function () {
+      if (this.$store.state.bakery.currentUser != null) {
+        return true
+      } else {
+        return false
+      }
     }
   },
 
