@@ -11,7 +11,7 @@
         </q-card-section>
 
         <q-card-actions>
-          <q-btn label="Login" @click="onLogin" color="primary"/>
+          <q-btn label="Login" @click="placeOrder" color="primary"/>
           <q-btn label="Cancel" @click="onCancel" color="primary" flat class="q-ml-sm" />
         </q-card-actions>
       </q-card>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { api } from 'boot/axios.js'
+
 export default {
     name: 'Login',
     data() {
@@ -30,19 +32,59 @@ export default {
           password: ""
         }
     },
-    props: {
-        loginState: {
-            type: Boolean,
-            default: false,
-            required: true
-        }
-    },
     methods: {
       changeState () {
         this.state = !this.state
       },
-      onLogin () {
-        console.log("skeet")
+      placeOrder () {
+        console.log(new Date().toISOString())
+        var id = 0;
+        // Finds the highest id of all orders and makes the new id one higher
+        for (var i = 0; i < this.orders.length; i++) {
+          if (this.orders[i].id > id) {
+            id = this.orders[i].id + 1
+          }
+        }
+
+        // Constructs the new order
+        var order = {
+          "id": id,
+          "customerId": this.currentUser.id,
+          "cakes": this.currentOrder.cakes,
+          "totalPrice": this.currentOrder.totalPrice,
+          "timestamp": new Date().toISOString()
+        }
+
+        // Adds the new order to the database
+        api.post('orders', order)
+          .then(response => {
+            console.log(response)
+          })
+          .catch(() => {
+            this.$q.notify({
+              color: 'negative',
+              position: 'top',
+              message: 'Adding Order Failed',
+              icon: 'report_problem'
+            })
+          })
+
+        // Loads all orders again
+        api.get('orders')
+          .then((response) => {
+            // Save orders to store
+            this.$store.commit('bakery/addOrders', response.data)
+          })
+          .catch(() => {
+            this.$q.notify({
+              color: 'negative',
+              position: 'top',
+              message: 'Order loading failed',
+              icon: 'report_problem'
+            })
+          })
+
+        this.$store.commit("bakery/removeCurrentOrder")
         this.state = false
       },
       onCancel () {
@@ -51,7 +93,19 @@ export default {
         this.password = ""
         this.state = false
       }
+    },
+    computed: {
+      currentOrder: function () {
+        return this.$store.state.bakery.currentOrder
+      },
+      orders: function () {
+        return this.$store.state.bakery.orders
+      },
+      currentUser: function () {
+        return this.$store.state.bakery.currentUser
+      }
     }
+
 }
 </script>
 

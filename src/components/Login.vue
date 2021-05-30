@@ -66,8 +66,11 @@ export default {
       },
       onLogin () {
         for (var i = 0; i < this.customers.length; i++) {
+          // Looks for the email entered in all costumer accounts
           if (this.customers[i].email == this.email.trim()) {
+            // Checks if the password entered is the same as it is for the customer account with the email above
             if (this.customers[i].password == this.password.trim()) {
+              // Logs in the user
               this.$store.commit("bakery/login", this.customers[i].id)
             }
           }

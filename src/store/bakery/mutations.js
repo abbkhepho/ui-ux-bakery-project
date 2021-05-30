@@ -100,6 +100,11 @@ export function subtractCurrentOrder (state, cake) {
 
 }
 
+export function removeCurrentOrder (state) {
+  state.currentOrder = {"cakes": [], "totalPrice": 0,}
+  console.log(state.currentOrder)
+}
+
 export function login (state, id) {
   // Looks for the customer with the correct id and changes the state currentUser to it
   for (var i = 0; i < state.customers.length; i++) {
@@ -107,10 +112,8 @@ export function login (state, id) {
       state.currentUser = state.customers[i]
     }
   }
-  console.log(state.currentUser)
 }
 
 export function logout (state) {
   state.currentUser = null
-  console.log(state.currentUser)
 }
