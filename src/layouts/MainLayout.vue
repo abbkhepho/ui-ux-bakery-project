@@ -7,7 +7,6 @@
                     <div>
                         <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('/')">Store</h6></q-btn>
                         <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('about')">About us</h6></q-btn>
-                        <q-btn push flat no-caps class="text-white q-ma-sm q-pl-xl q-pr-xl"><h6 class="label q-ma-none" @click="Route('contact')">Contact us</h6></q-btn>
                     </div>
                 </q-toolbar-title>
                 <div class="row q-gutter-x-md text-white">
