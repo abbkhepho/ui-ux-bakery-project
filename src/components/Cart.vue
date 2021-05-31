@@ -3,7 +3,7 @@
     <q-dialog v-model="state">
       <q-card>
         <q-card-section>
-          <div class="text-h6 text-primary">Shopping Cart</div>
+          <div class="text-h5 text-primary">Shopping Cart</div>
         </q-card-section>
 
         <q-card-section>
@@ -12,6 +12,9 @@
               :cake="cake"
             />
           </div>
+          <h5 class="text-primary q-mb-none">
+            Total: ${{ currentOrder.totalPrice }}
+          </h5>
         </q-card-section>
 
         <q-card-actions>
