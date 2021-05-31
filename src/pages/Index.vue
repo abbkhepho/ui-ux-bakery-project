@@ -6,7 +6,7 @@
             :id="cake.id"
             :title="cake.title"
             :imageurl="cake.image"
-            :description="cake.detailDescription"
+            :description="cake.previewDescription"
             :price="cake.price"
           />
       </div>

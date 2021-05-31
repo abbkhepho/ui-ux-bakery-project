@@ -96,6 +96,7 @@ q-expansion-item {
 #main {
     border-radius: 7px;
     width: 285px;
+    background-color: rgba(255, 255, 255)
 }
 
 #description {

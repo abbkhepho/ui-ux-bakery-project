@@ -5,7 +5,7 @@
                 <q-img class="avatar-image" :src="avatar" :ratio="1/1"></q-img>
             </div>
             <div class="right column justify-center">
-                <div class="top col-4 text-secondary">
+                <div class="top col-4 text-primary">
                     <h5 class="q-ma-none">{{ name }}</h5>
                 </div>
                 <div class="bottom col-8">

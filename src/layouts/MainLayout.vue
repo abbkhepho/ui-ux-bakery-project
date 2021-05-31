@@ -1,5 +1,5 @@
 <template>
-    <q-layout view="lHh Lpr lFf">
+    <q-layout class="body" view="lHh Lpr lFf">
         <q-header class="header">
             <q-toolbar id="toolbar">
                 <q-toolbar-title class="column">
@@ -180,7 +180,11 @@ export default {
 
 <style>
 .header {
-    background-color: rgba(255, 107, 107, 1)
+  background-color: rgba(255, 107, 107, 1)
+}
+
+.body {
+  background-color: #A8EAD0
 }
 
 .title {
