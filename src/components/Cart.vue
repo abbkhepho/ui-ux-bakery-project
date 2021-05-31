@@ -7,12 +7,17 @@
         </q-card-section>
 
         <q-card-section>
-          
+          <div v-for="cake in currentOrder.cakes" :key="cake.cakeId">
+            <CartItem
+              :cake="cake"
+            />
+          </div>
         </q-card-section>
 
         <q-card-actions>
-          <q-btn label="Login" @click="placeOrder" color="primary"/>
-          <q-btn label="Cancel" @click="onCancel" color="primary" flat class="q-ml-sm" />
+          <q-btn label="Place Order" @click="placeOrder" color="secondary"/>
+          <q-btn label="Empty Cart" @click="onEmpty" color="secondary" flat class="q-ml-sm" />
+          <q-btn label="Close" @click="onCancel" color="secondary" flat class="q-ml-sm" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -21,9 +26,13 @@
 
 <script>
 import { api } from 'boot/axios.js'
+import CartItem from "../components/CartItem.vue"
 
 export default {
-    name: 'Login',
+    name: 'Cart',
+    components: {
+      CartItem
+    },
     data() {
         return {
           state: false,
@@ -88,10 +97,10 @@ export default {
         this.state = false
       },
       onCancel () {
-        console.log("yeet")
-        this.email = ""
-        this.password = ""
         this.state = false
+      },
+      onEmpty () {
+        this.$store.commit("bakery/removeCurrentOrder")
       }
     },
     computed: {

@@ -41,8 +41,8 @@
         </q-card-section>
 
         <q-card-actions>
-          <q-btn label="Login" @click="onLogin" color="primary"/>
-          <q-btn label="Cancel" @click="onCancel" color="primary" flat class="q-ml-sm" />
+          <q-btn label="Login" @click="onLogin" color="secondary"/>
+          <q-btn label="Cancel" @click="onCancel" color="secondary" flat class="q-ml-sm" />
         </q-card-actions>
       </q-card>
     </q-dialog>
