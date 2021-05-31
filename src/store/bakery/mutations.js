@@ -105,6 +105,11 @@ export function removeCurrentOrder (state) {
   console.log(state.currentOrder)
 }
 
+export function removeOrders (state) {
+  state.orders = []
+  console.log(state.currentOrder)
+}
+
 export function login (state, id) {
   // Looks for the customer with the correct id and changes the state currentUser to it
   for (var i = 0; i < state.customers.length; i++) {

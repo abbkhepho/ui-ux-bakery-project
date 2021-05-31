@@ -53,7 +53,7 @@ export default {
         var id = 0;
         // Finds the highest id of all orders and makes the new id one higher
         for (var i = 0; i < this.orders.length; i++) {
-          if (this.orders[i].id > id) {
+          if (this.orders[i].id >= id) {
             id = this.orders[i].id + 1
           }
         }
@@ -66,6 +66,8 @@ export default {
           "totalPrice": this.currentOrder.totalPrice,
           "timestamp": new Date().toISOString()
         }
+
+        this.$store.commit("bakery/removeOrders")
 
         // Adds the new order to the database
         api.post('orders', order)
