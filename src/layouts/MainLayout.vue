@@ -2,6 +2,10 @@
     <q-layout class="body" view="lHh Lpr lFf">
         <q-header class="header">
             <q-toolbar id="toolbar">
+                <q-img 
+                  src="..\assets\bear-island.png"
+                  style="height: 100px; max-width: 100px"
+                />
                 <q-toolbar-title class="column">
                     <h3 class="title q-ma-md" @click="Route('/')">Bear Island Bakery</h3>
                     <div>
