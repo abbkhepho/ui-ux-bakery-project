@@ -82,6 +82,8 @@ export default {
     loadData() {
       console.log("api call start")
 
+
+      this.$store.commit("bakery/removeCakes")
       // Get all cakes from database
       api.get('cakes')
       .then((response) => {
@@ -97,6 +99,7 @@ export default {
         })
       })
 
+      this.$store.commit("bakery/removeStaff")
       // Get all staff from database
       api.get('staff')
       .then((response) => {
@@ -111,7 +114,8 @@ export default {
           icon: 'report_problem'
         })
       })
-
+      
+      this.$store.commit("bakery/removeCustomers")
       // Get all customers from database
       api.get('customers')
       .then((response) => {
@@ -127,6 +131,7 @@ export default {
         })
       })
 
+      this.$store.commit("bakery/removeOrders")
       // Get all orders from database
       api.get('orders')
       .then((response) => {

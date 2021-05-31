@@ -107,7 +107,18 @@ export function removeCurrentOrder (state) {
 
 export function removeOrders (state) {
   state.orders = []
-  console.log(state.currentOrder)
+}
+
+export function removeCakes (state) {
+  state.cakes = []
+}
+
+export function removeStaff (state) {
+  state.staff = []
+}
+
+export function removeCustomers (state) {
+  state.customers = []
 }
 
 export function login (state, id) {

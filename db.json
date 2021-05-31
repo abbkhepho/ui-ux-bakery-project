@@ -1382,6 +1382,50 @@
       ],
       "totalPrice": 31,
       "timestamp": "2021-05-31T09:02:50.050Z"
+    },
+    {
+      "id": 53,
+      "customerId": 7,
+      "cakes": [
+        {
+          "cakeId": 2,
+          "quantity": 1
+        },
+        {
+          "cakeId": 4,
+          "quantity": 2
+        },
+        {
+          "cakeId": 5,
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 66,
+      "timestamp": "2021-05-31T09:56:01.616Z"
+    },
+    {
+      "id": 54,
+      "customerId": 7,
+      "cakes": [
+        {
+          "cakeId": 1,
+          "quantity": 1
+        },
+        {
+          "cakeId": 10,
+          "quantity": 1
+        },
+        {
+          "cakeId": 11,
+          "quantity": 1
+        },
+        {
+          "cakeId": 12,
+          "quantity": 1
+        }
+      ],
+      "totalPrice": 29,
+      "timestamp": "2021-05-31T10:40:49.894Z"
     }
   ]
 }
